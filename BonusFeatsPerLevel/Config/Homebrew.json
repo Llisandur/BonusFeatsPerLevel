@@ -1,0 +1,81 @@
+{
+  "NewSettingsOffByDefault": false,
+  "MechanicsChanges": {
+    "DisableAll": false,
+    "Settings": {
+      "BonusBackgrounds": {
+        "Enabled": false,
+        "Homebrew": true,
+        "Description": "Allows the selection of additional backgrounds."
+      },
+      "BonusFeats": {
+        "Enabled": false,
+        "Homebrew": true,
+        "Description": "Grants a bonus feat for each level that a feat is normally gained."
+      },
+      "BonusMythicAbilities": {
+        "Enabled": false,
+        "Homebrew": true,
+        "Description": "Grants a bonus mythic ability for each level. BREAKS THE UI"
+      },
+      "BonusMythicFeats": {
+        "Enabled": false,
+        "Homebrew": true,
+        "Description": "Grants a bonus mythic feat for each level. BREAKS THE UI"
+      },
+      "OfflevelFeats": {
+        "Enabled": true,
+        "Homebrew": true,
+        "Description": "Grants a bonus ability for each level that a feat is not normally gained."
+      },
+      "OfflevelMythicAbilities": {
+        "Enabled": true,
+        "Homebrew": true,
+        "Description": "Grants a bonus mythic ability for each level."
+      },
+      "OfflevelMythicFeats": {
+        "Enabled": true,
+        "Homebrew": true,
+        "Description": "Grants a bonus mythic feat for each level."
+      }
+    },
+    "IsExpanded": true
+  },
+  "Classes": {
+    "DisableAll": false,
+    "Settings": {
+      "AdvancedProgressionClass": {
+        "Enabled": false,
+        "Homebrew": true,
+        "Description": "Adds Advanced Progression class for adding to gestalt build."
+      },
+      "NineTailsClass": {
+        "Enabled": false,
+        "Homebrew": true,
+        "Description": "Adds a weird kitsune specific class."
+      }
+    },
+    "IsExpanded": true
+  },
+  "Feats": {
+    "DisableAll": false,
+    "Settings": {
+      "ExtraBackground": {
+        "Enabled": true,
+        "Homebrew": true,
+        "Description": "Adds Extra Background as a normal feat."
+      },
+      "ExtraMythicAbility": {
+        "Enabled": true,
+        "Homebrew": true,
+        "Description": "Adds Extra Mythic Ability as a normal feat."
+      },
+      "ExtraMythicFeat": {
+        "Enabled": true,
+        "Homebrew": true,
+        "Description": "Adds Extra Mythic Feat as a normal feat."
+      }
+    },
+    "IsExpanded": true
+  }
+}

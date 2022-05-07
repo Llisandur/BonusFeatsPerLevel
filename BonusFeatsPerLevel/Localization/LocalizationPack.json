@@ -1,0 +1,268 @@
+﻿{
+  "LocalizedStrings": [
+    {
+      "Key": "bb6b4473360f446cb31f95e01fd858a1",
+      "SimpleName": "AdvancedProgressionClass.Description",
+      "ProcessTemplates": false,
+      "enGB": "A class to use with gestalt multiple classes to add extra base feats. DO NOT TAKE AS BASE CLASS.",
+      "ruRU": null,
+      "deDE": null,
+      "frFR": null,
+      "zhCN": null,
+      "esES": null
+    },
+    {
+      "Key": "c383361f3ebc4e97bf4af8e1400ef332",
+      "SimpleName": "AdvancedProgressionClass.Name",
+      "ProcessTemplates": false,
+      "enGB": "Advanced Progression",
+      "ruRU": null,
+      "deDE": null,
+      "frFR": null,
+      "zhCN": null,
+      "esES": null
+    },
+    {
+      "Key": "f1ebb1b648dc4643b2317430abcdcb64",
+      "SimpleName": "AdvancedProgressionProgression.Name",
+      "ProcessTemplates": false,
+      "enGB": "",
+      "ruRU": null,
+      "deDE": null,
+      "frFR": null,
+      "zhCN": null,
+      "esES": null
+    },
+    {
+      "Key": "fa95216565bb42e6bd251bd1da3d464e",
+      "SimpleName": "ExtraBackground.Description",
+      "ProcessTemplates": true,
+      "enGB": "You gain one additional background.\nYou can take this feat multiple times. Each time you do, you gain another background.",
+      "ruRU": null,
+      "deDE": null,
+      "frFR": null,
+      "zhCN": null,
+      "esES": null
+    },
+    {
+      "Key": "0100e072c51949179dade442e6ac61a9",
+      "SimpleName": "ExtraBackground.Name",
+      "ProcessTemplates": false,
+      "enGB": "Extra Background",
+      "ruRU": null,
+      "deDE": null,
+      "frFR": null,
+      "zhCN": null,
+      "esES": null
+    },
+    {
+      "Key": "b014e98f1a1d404f84dc8b26309cace2",
+      "SimpleName": "ExtraMythicAbility.Description",
+      "ProcessTemplates": true,
+      "enGB": "You gain one additional mythic ability. You must meet the prerequisites for this mythic ability.\nYou can take this feat multiple times. Each time you do, you gain another mythic ability.",
+      "ruRU": null,
+      "deDE": null,
+      "frFR": null,
+      "zhCN": null,
+      "esES": null
+    },
+    {
+      "Key": "dcb5c6ae84dd46f19419c6fd6de1a75b",
+      "SimpleName": "ExtraMythicAbility.Name",
+      "ProcessTemplates": false,
+      "enGB": "Extra Mythic Ability",
+      "ruRU": null,
+      "deDE": null,
+      "frFR": null,
+      "zhCN": null,
+      "esES": null
+    },
+    {
+      "Key": "e79641a12b52422f832eb597a5c6525c",
+      "SimpleName": "ExtraMythicFeat.Description",
+      "ProcessTemplates": true,
+      "enGB": "You gain one additional mythic feat. You must meet the prerequisites for this mythic feat.\nYou can take this feat multiple times. Each time you do, you gain another mythic feat.",
+      "ruRU": null,
+      "deDE": null,
+      "frFR": null,
+      "zhCN": null,
+      "esES": null
+    },
+    {
+      "Key": "9d7123fa495e4103bb650a4e8a82241c",
+      "SimpleName": "ExtraMythicFeat.Name",
+      "ProcessTemplates": false,
+      "enGB": "Extra Mythic Feat",
+      "ruRU": null,
+      "deDE": null,
+      "frFR": null,
+      "zhCN": null,
+      "esES": null
+    },
+    {
+      "Key": "4b06ebe8d98749cfa0e29b6dba426ed0",
+      "SimpleName": "MagicalTailArchetypeFeatureAP1.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 3rd level and every 2 levels thereafter, a nine tails gains Magical Tail as a bonus feat. If the nine tails already has nine tails, each additional time the feat is taken, the nine tails gains one additional daily use of the lowest level Magical Tail ability not already affected by this effect.",
+      "ruRU": null,
+      "deDE": null,
+      "frFR": null,
+      "zhCN": null,
+      "esES": null
+    },
+    {
+      "Key": "faba90536bd7482cbaf60d325bc0d7f6",
+      "SimpleName": "MagicalTailArchetypeFeatureAP2.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 3rd level and every 2 levels thereafter, a nine tails gains Magical Tail as a bonus feat. If the nine tails already has nine tails, each additional time the feat is taken, the nine tails gains one additional daily use of the lowest level Magical Tail ability not already affected by this effect.",
+      "ruRU": null,
+      "deDE": null,
+      "frFR": null,
+      "zhCN": null,
+      "esES": null
+    },
+    {
+      "Key": "cd6343296ad646c2a71021cc158792ff",
+      "SimpleName": "MagicalTailArchetypeFeatureAP3.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 3rd level and every 2 levels thereafter, a nine tails gains Magical Tail as a bonus feat. If the nine tails already has nine tails, each additional time the feat is taken, the nine tails gains one additional daily use of the lowest level Magical Tail ability not already affected by this effect.",
+      "ruRU": null,
+      "deDE": null,
+      "frFR": null,
+      "zhCN": null,
+      "esES": null
+    },
+    {
+      "Key": "3524bd76c5c8476db7e57811d14d9af4",
+      "SimpleName": "MagicalTailArchetypeFeatureAP4.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 3rd level and every 2 levels thereafter, a nine tails gains Magical Tail as a bonus feat. If the nine tails already has nine tails, each additional time the feat is taken, the nine tails gains one additional daily use of the lowest level Magical Tail ability not already affected by this effect.",
+      "ruRU": null,
+      "deDE": null,
+      "frFR": null,
+      "zhCN": null,
+      "esES": null
+    },
+    {
+      "Key": "c9715dfefa2a435ca1fa284cdfcf3df1",
+      "SimpleName": "MagicalTailArchetypeFeatureAP5.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 3rd level and every 2 levels thereafter, a nine tails gains Magical Tail as a bonus feat. If the nine tails already has nine tails, each additional time the feat is taken, the nine tails gains one additional daily use of the lowest level Magical Tail ability not already affected by this effect.",
+      "ruRU": null,
+      "deDE": null,
+      "frFR": null,
+      "zhCN": null,
+      "esES": null
+    },
+    {
+      "Key": "2f6f6d9355224e3dbdd631df315764fa",
+      "SimpleName": "MagicalTailArchetypeFeatureAP6.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 3rd level and every 2 levels thereafter, a nine tails gains Magical Tail as a bonus feat. If the nine tails already has nine tails, each additional time the feat is taken, the nine tails gains one additional daily use of the lowest level Magical Tail ability not already affected by this effect.",
+      "ruRU": null,
+      "deDE": null,
+      "frFR": null,
+      "zhCN": null,
+      "esES": null
+    },
+    {
+      "Key": "b1b17c34090b43e9be1120f8ea68130b",
+      "SimpleName": "MagicalTailArchetypeFeatureAP7.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 3rd level and every 2 levels thereafter, a nine tails gains Magical Tail as a bonus feat. If the nine tails already has nine tails, each additional time the feat is taken, the nine tails gains one additional daily use of the lowest level Magical Tail ability not already affected by this effect.",
+      "ruRU": null,
+      "deDE": null,
+      "frFR": null,
+      "zhCN": null,
+      "esES": null
+    },
+    {
+      "Key": "85a540bb17ab4f418a56a5ded663272c",
+      "SimpleName": "MagicalTailArchetypeFeatureAP8.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 3rd level and every 2 levels thereafter, a nine tails gains Magical Tail as a bonus feat. If the nine tails already has nine tails, each additional time the feat is taken, the nine tails gains one additional daily use of the lowest level Magical Tail ability not already affected by this effect.",
+      "ruRU": null,
+      "deDE": null,
+      "frFR": null,
+      "zhCN": null,
+      "esES": null
+    },
+    {
+      "Key": "3d8dee1b802844e9a93a82253a10a8d9",
+      "SimpleName": "MagicalTailArchetypeFeatureAP9.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 3rd level and every 2 levels thereafter, a nine tails gains Magical Tail as a bonus feat. If the nine tails already has nine tails, each additional time the feat is taken, the nine tails gains one additional daily use of the lowest level Magical Tail ability not already affected by this effect.",
+      "ruRU": null,
+      "deDE": null,
+      "frFR": null,
+      "zhCN": null,
+      "esES": null
+    },
+    {
+      "Key": "871666be204c4bd6be255f462d54c256",
+      "SimpleName": "NineTailsClass.Description",
+      "ProcessTemplates": false,
+      "enGB": "Stories often tell of kitsune with multiple tails, but not many realize that fewer than one kitsune in every thousand has this potential, and those that do usually have a magical quirk in their blood or have been blessed by their race's deific matron.",
+      "ruRU": null,
+      "deDE": null,
+      "frFR": null,
+      "zhCN": null,
+      "esES": null
+    },
+    {
+      "Key": "4e6b77b44c4742ee8d38429c61527677",
+      "SimpleName": "NineTailsClass.Name",
+      "ProcessTemplates": false,
+      "enGB": "Nine Tails",
+      "ruRU": null,
+      "deDE": null,
+      "frFR": null,
+      "zhCN": null,
+      "esES": null
+    },
+    {
+      "Key": "96de2551d7f340c68f99a9fbd1224e7b",
+      "SimpleName": "NineTailsFocused.Description",
+      "ProcessTemplates": true,
+      "enGB": "At every level, the nine tails gains a bonus feat in addition to those gained from normal advancement. These bonus feats must be selected from a selection of magic-related feats. The nine tails must meet the prerequisites of this feat.",
+      "ruRU": null,
+      "deDE": null,
+      "frFR": null,
+      "zhCN": null,
+      "esES": null
+    },
+    {
+      "Key": "84b2ce71a5ab4a0a896303a0ff4cf447",
+      "SimpleName": "NineTailsFocused.Name",
+      "ProcessTemplates": false,
+      "enGB": "Focused",
+      "ruRU": null,
+      "deDE": null,
+      "frFR": null,
+      "zhCN": null,
+      "esES": null
+    },
+    {
+      "Key": "73a04c6d65064e179cfada75f0f686f6",
+      "SimpleName": "NineTailsMetamagicKnowledge.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 4th level and every even level thereafter, the nine tails gains a bonus feat in addition to those gained from normal advancement. These bonus feats must be selected from those listed as metamagic feats. The nine tails must meet the prerequisites of this feat.",
+      "ruRU": null,
+      "deDE": null,
+      "frFR": null,
+      "zhCN": null,
+      "esES": null
+    },
+    {
+      "Key": "52a3f7fb89d844adbe44124ffaa209c6",
+      "SimpleName": "NineTailsMetamagicKnowledge.Name",
+      "ProcessTemplates": false,
+      "enGB": "Metamagic Knowledge",
+      "ruRU": null,
+      "deDE": null,
+      "frFR": null,
+      "zhCN": null,
+      "esES": null
+    }
+  ]
+}
