@@ -14,14 +14,14 @@ namespace BonusFeatsPerLevel.NewContent.Feats
         {
             var MythicAbilitySelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("ba0e5a900b775be4a99702f1ed08914d");
 
-            var ExtraMythicAbility = FeatTools.CreateExtraSelectionFeat(BFPLContext, "ExtraMythicAbility", MythicAbilitySelection, bp => {
-                bp.SetName(BFPLContext, "Extra Mythic Ability");
-                bp.SetDescription(BFPLContext, "You gain one additional mythic ability. You must meet the prerequisites for this mythic ability." +
+            var ExtraMythicAbility = FeatTools.CreateExtraSelectionFeat(ThisModContext, "ExtraMythicAbility", MythicAbilitySelection, bp => {
+                bp.SetName(ThisModContext, "Extra Mythic Ability");
+                bp.SetDescription(ThisModContext, "You gain one additional mythic ability. You must meet the prerequisites for this mythic ability." +
                     "\nYou can take this feat multiple times. Each time you do, you gain another mythic ability.");
                 bp.AddPrerequisiteFeature(MythicAbilitySelection, GroupType.Any);
                 bp.GetComponents<PrerequisiteFeature>().ForEach(p => p.Group = GroupType.Any);
             });
-            if (BFPLContext.Homebrew.Feats.IsDisabled("ExtraMythicAbility")) { return; }
+            if (ThisModContext.Homebrew.Feats.IsDisabled("ExtraMythicAbility")) { return; }
             FeatTools.AddAsFeat(ExtraMythicAbility);
         }
     }

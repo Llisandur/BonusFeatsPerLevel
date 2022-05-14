@@ -14,14 +14,14 @@ namespace BonusFeatsPerLevel.NewContent.Feats
         {
             var BackgroundBaseSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("f926dabeee7f8a54db8f2010b323383c");
 
-            var ExtraBackground = FeatTools.CreateExtraSelectionFeat(BFPLContext, "ExtraBackground", BackgroundBaseSelection, bp => {
-                bp.SetName(BFPLContext, "Extra Background");
-                bp.SetDescription(BFPLContext, "You gain one additional background." +
+            var ExtraBackground = FeatTools.CreateExtraSelectionFeat(ThisModContext, "ExtraBackground", BackgroundBaseSelection, bp => {
+                bp.SetName(ThisModContext, "Extra Background");
+                bp.SetDescription(ThisModContext, "You gain one additional background." +
                     "\nYou can take this feat multiple times. Each time you do, you gain another background.");
                 bp.AddPrerequisiteFeature(BackgroundBaseSelection, GroupType.Any);
                 bp.GetComponents<PrerequisiteFeature>().ForEach(p => p.Group = GroupType.Any);
             });
-            if (BFPLContext.Homebrew.Feats.IsDisabled("ExtraMythicAbility")) { return; }
+            if (ThisModContext.Homebrew.Feats.IsDisabled("ExtraMythicAbility")) { return; }
             FeatTools.AddAsFeat(ExtraBackground);
         }
     }

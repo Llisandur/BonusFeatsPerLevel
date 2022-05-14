@@ -22,15 +22,15 @@ namespace BonusFeatsPerLevel.MechanicsChanges
 				if (loaded) return;
 				loaded = true;
 
-				if (BFPLContext.Homebrew.MechanicsChanges.IsEnabled("BonusFeats") || 
-					BFPLContext.Homebrew.MechanicsChanges.IsEnabled("OfflevelFeats"))
+				if (ThisModContext.Homebrew.MechanicsChanges.IsEnabled("BonusFeats") || 
+					ThisModContext.Homebrew.MechanicsChanges.IsEnabled("OfflevelFeats"))
 				{
 					UpdateBasicFeatsProgression();
 				}
-				if (BFPLContext.Homebrew.MechanicsChanges.IsEnabled("BonusMythicFeats") || 
-					BFPLContext.Homebrew.MechanicsChanges.IsEnabled("BonusMythicAbilities") ||
-					BFPLContext.Homebrew.MechanicsChanges.IsEnabled("OfflevelMythicFeats") ||
-					BFPLContext.Homebrew.MechanicsChanges.IsEnabled("OfflevelMythicAbilities"))
+				if (ThisModContext.Homebrew.MechanicsChanges.IsEnabled("BonusMythicFeats") || 
+					ThisModContext.Homebrew.MechanicsChanges.IsEnabled("BonusMythicAbilities") ||
+					ThisModContext.Homebrew.MechanicsChanges.IsEnabled("OfflevelMythicFeats") ||
+					ThisModContext.Homebrew.MechanicsChanges.IsEnabled("OfflevelMythicAbilities"))
 				{
 					UpdateMythicProgression(Progressions.MythicCompanionProgression);
 					UpdateMythicProgression(Progressions.MythicStartingProgression);
@@ -62,7 +62,7 @@ namespace BonusFeatsPerLevel.MechanicsChanges
 					BasicFeatSelection
 				};
 
-				if (BFPLContext.Homebrew.MechanicsChanges.IsEnabled("OfflevelFeats"))
+				if (ThisModContext.Homebrew.MechanicsChanges.IsEnabled("OfflevelFeats"))
                 {
 					LevelEntry[] NewEntries = new LevelEntry[numLevels];
 					for (int i = 0; i < numLevels; i++)
@@ -83,7 +83,7 @@ namespace BonusFeatsPerLevel.MechanicsChanges
 					BasicFeatsProgression.LevelEntries = NewEntries;
 				}
 
-				if (BFPLContext.Homebrew.MechanicsChanges.IsEnabled("BonusFeats"))
+				if (ThisModContext.Homebrew.MechanicsChanges.IsEnabled("BonusFeats"))
                 {
 					for (int i = 1; i < BonusFeatMultiplier; i++)
                     {
@@ -101,7 +101,7 @@ namespace BonusFeatsPerLevel.MechanicsChanges
 						}
 					}
 				}
-				if (BFPLContext.Homebrew.MechanicsChanges.IsEnabled("BonusBackgrounds"))
+				if (ThisModContext.Homebrew.MechanicsChanges.IsEnabled("BonusBackgrounds"))
                 {
 					for (int i = 1; i < BonusBackgroundsMultiplier; i++)
                     {
@@ -119,8 +119,8 @@ namespace BonusFeatsPerLevel.MechanicsChanges
                         }
                     }
                 }
-				BFPLContext.Logger.Log($"Added {AddedFeats} feat selections to {BasicFeatsProgression.name}");
-				BFPLContext.Logger.Log($"Added {AddedBackgrounds} background selections to {BasicFeatsProgression.name}");
+				ThisModContext.Logger.Log($"Added {AddedFeats} feat selections to {BasicFeatsProgression.name}");
+				ThisModContext.Logger.Log($"Added {AddedBackgrounds} background selections to {BasicFeatsProgression.name}");
 			}
 
 			static void UpdateMythicProgression(BlueprintProgression Progression)
@@ -137,12 +137,12 @@ namespace BonusFeatsPerLevel.MechanicsChanges
 				{
 					if (Entry.Features.Count > 0)
 					{
-						if (BFPLContext.Homebrew.MechanicsChanges.IsEnabled("OfflevelMythicFeats") && !Entry.Features.Contains(MythicFeatSelection))
+						if (ThisModContext.Homebrew.MechanicsChanges.IsEnabled("OfflevelMythicFeats") && !Entry.Features.Contains(MythicFeatSelection))
 						{
 							Entry.Features.Add(MythicFeatSelection);
 							AddedMythicFeats++;
 						}
-						if (BFPLContext.Homebrew.MechanicsChanges.IsEnabled("OfflevelMythicAbilities") && !Entry.Features.Contains(MythicAbilitySelection))
+						if (ThisModContext.Homebrew.MechanicsChanges.IsEnabled("OfflevelMythicAbilities") && !Entry.Features.Contains(MythicAbilitySelection))
 						{
 							Entry.Features.Add(MythicAbilitySelection);
 							AddedMythicAbilities++;
@@ -155,7 +155,7 @@ namespace BonusFeatsPerLevel.MechanicsChanges
 					{
 						if (Entry.Features.Count > 0)
 						{
-							if (BFPLContext.Homebrew.MechanicsChanges.IsEnabled("BonusMythicFeats") && Entry.Features.Contains(MythicFeatSelection))
+							if (ThisModContext.Homebrew.MechanicsChanges.IsEnabled("BonusMythicFeats") && Entry.Features.Contains(MythicFeatSelection))
 							{
 								Entry.Features.Add(MythicFeatSelection);
 								AddedMythicFeats++;
@@ -169,7 +169,7 @@ namespace BonusFeatsPerLevel.MechanicsChanges
 					{
 						if (Entry.Features.Count > 0)
 						{
-							if (BFPLContext.Homebrew.MechanicsChanges.IsEnabled("BonusMythicAbilities") && Entry.Features.Contains(MythicAbilitySelection))
+							if (ThisModContext.Homebrew.MechanicsChanges.IsEnabled("BonusMythicAbilities") && Entry.Features.Contains(MythicAbilitySelection))
 							{
 								Entry.Features.Add(MythicAbilitySelection);
 								AddedMythicAbilities++;
@@ -178,8 +178,8 @@ namespace BonusFeatsPerLevel.MechanicsChanges
 					}
 				}
 				
-				BFPLContext.Logger.Log($"Added {AddedMythicFeats} mythic feats to {Progression}");
-				BFPLContext.Logger.Log($"Added {AddedMythicAbilities} mythic abilities to {Progression}");
+				ThisModContext.Logger.Log($"Added {AddedMythicFeats} mythic feats to {Progression}");
+				ThisModContext.Logger.Log($"Added {AddedMythicAbilities} mythic abilities to {Progression}");
 			}
 		}
 	}

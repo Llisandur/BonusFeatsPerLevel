@@ -7,6 +7,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using static Kingmaker.Blueprints.Classes.Prerequisites.Prerequisite;
 using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Blueprints.Root;
+using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.ResourceLinks;
 using Kingmaker.RuleSystem;
@@ -22,7 +23,7 @@ namespace BonusFeatsPerLevel.NewContent.Classes
         {
             var BlueprintRoot = BlueprintTools.GetBlueprint<BlueprintRoot>("2d77316c72b9ed44f888ceefc2a131f6");
             #region Feature Reference
-            BlueprintFeatureSelection BasicFeatSelection = BlueprintFeatures.BasicFeatSelection;
+            var BasicFeatSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("247a4068296e8be42890143f451b4b45");
             BlueprintFeatureSelection BackgroundBaseSelection = BlueprintFeatures.BackgroundsBaseSelection;
             var ScribingScrolls = BlueprintTools.GetBlueprint<BlueprintFeature>("a8a385bf53ee3454593ce9054375a2ec");
             var BrewPotions = BlueprintTools.GetBlueprint<BlueprintFeature>("c0f8c4e513eb493408b8070a1de93fc0");
@@ -42,20 +43,20 @@ namespace BonusFeatsPerLevel.NewContent.Classes
             string TailDesc = "At 3rd level and every 2 levels thereafter, a nine tails gains Magical Tail as a bonus {g|Encyclopedia:Feat}feat{/g}. If the nine tails " +
                 "already has nine tails, each additional time the feat is taken, the nine tails gains one additional daily use of the lowest level Magical Tail ability " +
                 "not already affected by this effect.";
-            var MagicalTailArchetypeFeatureAP1 = TailArchetypeFeature1.CreateCopy(BFPLContext, "MagicalTailArchetypeFeatureAP1", bp => { bp.SetDescription(BFPLContext, TailDesc); });
-            var MagicalTailArchetypeFeatureAP2 = TailArchetypeFeature2.CreateCopy(BFPLContext, "MagicalTailArchetypeFeatureAP2", bp => { bp.SetDescription(BFPLContext, TailDesc); });
-            var MagicalTailArchetypeFeatureAP3 = TailArchetypeFeature3.CreateCopy(BFPLContext, "MagicalTailArchetypeFeatureAP3", bp => { bp.SetDescription(BFPLContext, TailDesc); });
-            var MagicalTailArchetypeFeatureAP4 = TailArchetypeFeature4.CreateCopy(BFPLContext, "MagicalTailArchetypeFeatureAP4", bp => { bp.SetDescription(BFPLContext, TailDesc); });
-            var MagicalTailArchetypeFeatureAP5 = TailArchetypeFeature5.CreateCopy(BFPLContext, "MagicalTailArchetypeFeatureAP5", bp => { bp.SetDescription(BFPLContext, TailDesc); });
-            var MagicalTailArchetypeFeatureAP6 = TailArchetypeFeature6.CreateCopy(BFPLContext, "MagicalTailArchetypeFeatureAP6", bp => { bp.SetDescription(BFPLContext, TailDesc); });
-            var MagicalTailArchetypeFeatureAP7 = TailArchetypeFeature7.CreateCopy(BFPLContext, "MagicalTailArchetypeFeatureAP7", bp => { bp.SetDescription(BFPLContext, TailDesc); });
-            var MagicalTailArchetypeFeatureAP8 = TailArchetypeFeature8.CreateCopy(BFPLContext, "MagicalTailArchetypeFeatureAP8", bp => { bp.SetDescription(BFPLContext, TailDesc); });
-            var MagicalTailArchetypeFeatureAP9 = TailArchetypeFeature9.CreateCopy(BFPLContext, "MagicalTailArchetypeFeatureAP9", bp => { bp.SetDescription(BFPLContext, TailDesc); });
+            var MagicalTailArchetypeFeatureAP1 = TailArchetypeFeature1.CreateCopy(ThisModContext, "MagicalTailArchetypeFeatureAP1", bp => { bp.SetDescription(ThisModContext, TailDesc); });
+            var MagicalTailArchetypeFeatureAP2 = TailArchetypeFeature2.CreateCopy(ThisModContext, "MagicalTailArchetypeFeatureAP2", bp => { bp.SetDescription(ThisModContext, TailDesc); });
+            var MagicalTailArchetypeFeatureAP3 = TailArchetypeFeature3.CreateCopy(ThisModContext, "MagicalTailArchetypeFeatureAP3", bp => { bp.SetDescription(ThisModContext, TailDesc); });
+            var MagicalTailArchetypeFeatureAP4 = TailArchetypeFeature4.CreateCopy(ThisModContext, "MagicalTailArchetypeFeatureAP4", bp => { bp.SetDescription(ThisModContext, TailDesc); });
+            var MagicalTailArchetypeFeatureAP5 = TailArchetypeFeature5.CreateCopy(ThisModContext, "MagicalTailArchetypeFeatureAP5", bp => { bp.SetDescription(ThisModContext, TailDesc); });
+            var MagicalTailArchetypeFeatureAP6 = TailArchetypeFeature6.CreateCopy(ThisModContext, "MagicalTailArchetypeFeatureAP6", bp => { bp.SetDescription(ThisModContext, TailDesc); });
+            var MagicalTailArchetypeFeatureAP7 = TailArchetypeFeature7.CreateCopy(ThisModContext, "MagicalTailArchetypeFeatureAP7", bp => { bp.SetDescription(ThisModContext, TailDesc); });
+            var MagicalTailArchetypeFeatureAP8 = TailArchetypeFeature8.CreateCopy(ThisModContext, "MagicalTailArchetypeFeatureAP8", bp => { bp.SetDescription(ThisModContext, TailDesc); });
+            var MagicalTailArchetypeFeatureAP9 = TailArchetypeFeature9.CreateCopy(ThisModContext, "MagicalTailArchetypeFeatureAP9", bp => { bp.SetDescription(ThisModContext, TailDesc); });
             #endregion
             #region Metamagic Knowledge
-            var NineTailsMetamagicKnowledge = Helpers.CreateBlueprint<BlueprintFeatureSelection>(BFPLContext, "NineTailsMetamagicKnowledge", bp => {
-                bp.SetName(BFPLContext, "Metamagic Knowledge");
-                bp.SetDescription(BFPLContext, "At 4th level and every even level thereafter, the nine tails gains a bonus {g|Encyclopedia:Feat}feat{/g} in addition " +
+            var NineTailsMetamagicKnowledge = Helpers.CreateBlueprint<BlueprintFeatureSelection>(ThisModContext, "NineTailsMetamagicKnowledge", bp => {
+                bp.SetName(ThisModContext, "Metamagic Knowledge");
+                bp.SetDescription(ThisModContext, "At 4th level and every even level thereafter, the nine tails gains a bonus {g|Encyclopedia:Feat}feat{/g} in addition " +
                     "to those gained from normal advancement. These bonus feats must be selected from those listed as metamagic feats. The nine tails must meet the " +
                     "prerequisites of this feat.");
                 bp.AddFeatures(FeatTools.GetMetamagicFeats());
@@ -65,25 +66,32 @@ namespace BonusFeatsPerLevel.NewContent.Classes
             });
             #endregion
             #region Focused
-            var NineTailsFocused = Helpers.CreateBlueprint<BlueprintFeatureSelection>(BFPLContext, "NineTailsFocused", bp => {
-                bp.SetName(BFPLContext, "Focused");
-                bp.SetDescription(BFPLContext, "At every level, the nine tails gains a bonus {g|Encyclopedia:Feat}feat{/g} in addition " +
+            var NineTailsFocused = Helpers.CreateBlueprint<BlueprintFeatureSelection>(ThisModContext, "NineTailsFocused", bp => {
+                bp.SetName(ThisModContext, "Focused");
+                bp.SetDescription(ThisModContext, "At every level, the nine tails gains a bonus {g|Encyclopedia:Feat}feat{/g} in addition " +
                     "to those gained from normal advancement. These bonus feats must be selected from a selection of magic-related feats. The nine tails must meet the " +
                     "prerequisites of this feat.");
                 bp.m_Features = new BlueprintFeatureReference[0];
-                bp.Mode = SelectionMode.OnlyNew;
+                bp.Mode = SelectionMode.Default;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Feat };
                 bp.IsClassFeature = true;
             });
+            //NineTailsFocused.AddFeatures(BasicFeatSelection.m_AllFeatures
+            //    .Select(reference => reference.Get())
+            //    .Where(feature => feature.GetComponent<FeatureTagsComponent>().FeatureTags == FeatureTag.Magic)
+            //    .ToArray());
             NineTailsFocused.AddFeatures(
-                BlueprintTools.GetBlueprintReference<BlueprintFeatureSelectionReference>("45b72087ac2d4554aec4f44be852eddd"), //TTT.Base:ArcaneDiscoverySelection
+                BlueprintTools.GetBlueprintReference<BlueprintFeatureSelectionReference>("8ecee479c6d04c73926c4d95345b9314"), //TTT.Base:ExtraArcanistExploit
+                BlueprintTools.GetBlueprintReference<BlueprintFeatureReference>("635cb4aa1d924fe0b580449e6cb0396c"), //TTT.Base:ExtraReservoir
                 BlueprintTools.GetBlueprintReference<BlueprintParametrizedFeatureReference>("16fa59cc9a72a6043b566b49184f53fe"), //SpellFocus
                 BlueprintTools.GetBlueprintReference<BlueprintParametrizedFeatureReference>("5b04b45b228461c43bad768eb0f7c7bf"), //SpellFocusGreater
                 BlueprintTools.GetBlueprintReference<BlueprintParametrizedFeatureReference>("03031defb7164fcea949dcc05da1761d") //TTT.Base:VarisianTattooFeature
+
             );
+
             #endregion
 
-            var Class = Helpers.CreateBlueprint<BlueprintCharacterClass>(BFPLContext, "NineTailsClass", bp =>
+            var Class = Helpers.CreateBlueprint<BlueprintCharacterClass>(ThisModContext, "NineTailsClass", bp =>
             {
                 bp.m_Overrides = new List<string>();
                 bp.AddComponent<PrerequisiteFeature>(c =>
@@ -107,8 +115,8 @@ namespace BonusFeatsPerLevel.NewContent.Classes
                     c.HideInUI = true;
                     c.Not = true;
                 });
-                bp.LocalizedName = Helpers.CreateString(BFPLContext, $"{bp.name}.Name", "Nine Tails");
-                bp.LocalizedDescription = Helpers.CreateString(BFPLContext, $"{bp.name}.Description", "Stories often tell of kitsune with multiple tails, " +
+                bp.LocalizedName = Helpers.CreateString(ThisModContext, $"{bp.name}.Name", "Nine Tails");
+                bp.LocalizedDescription = Helpers.CreateString(ThisModContext, $"{bp.name}.Description", "Stories often tell of kitsune with multiple tails, " +
                     "but not many realize that fewer than one kitsune in every thousand has this potential, and those that do usually have a magical quirk in " +
                     "their blood or have been blessed by their {g|Encyclopedia:Race}race{/g}'s deific matron.");
                 bp.LocalizedDescriptionShort = bp.LocalizedDescription;
@@ -122,7 +130,7 @@ namespace BonusFeatsPerLevel.NewContent.Classes
                 bp.m_FortitudeSave = BlueprintTools.GetBlueprintReference<BlueprintStatProgressionReference>("dc0c7c1aba755c54f96c089cdf7d14a3"); //SavesLow
                 bp.m_ReflexSave = BlueprintTools.GetBlueprintReference<BlueprintStatProgressionReference>("dc0c7c1aba755c54f96c089cdf7d14a3"); //SavesLow
                 bp.m_WillSave = BlueprintTools.GetBlueprintReference<BlueprintStatProgressionReference>("dc0c7c1aba755c54f96c089cdf7d14a3"); //SavesLow
-                bp.m_Progression = BlueprintTools.GetModBlueprintReference<BlueprintProgressionReference>(BFPLContext, "NineTailsProgression");
+                bp.m_Progression = BlueprintTools.GetModBlueprintReference<BlueprintProgressionReference>(ThisModContext, "NineTailsProgression");
                 bp.m_Spellbook = null;
                 bp.ClassSkills = new StatType[0];
                 bp.IsDivineCaster = false;
@@ -146,13 +154,13 @@ namespace BonusFeatsPerLevel.NewContent.Classes
                 bp.m_DefaultBuild = null;
                 bp.m_AdditionalVisualSettings = null;
             });
-            var Progression = Helpers.CreateBlueprint<BlueprintProgression>(BFPLContext, "NineTailsProgression", bp =>
+            var Progression = Helpers.CreateBlueprint<BlueprintProgression>(ThisModContext, "NineTailsProgression", bp =>
             {
                 bp.m_Overrides = new List<string>();
                 bp.Components = new BlueprintComponent[0];
                 bp.m_AllowNonContextActions = false;
-                bp.m_DisplayName = Helpers.CreateString(BFPLContext, $"{bp.name}.Name", "");
-                bp.m_Description = Helpers.CreateString(BFPLContext, $"{bp.name}.Description", ""); ;
+                bp.m_DisplayName = Helpers.CreateString(ThisModContext, $"{bp.name}.Name", "");
+                bp.m_Description = Helpers.CreateString(ThisModContext, $"{bp.name}.Description", ""); ;
                 bp.m_DescriptionShort = bp.m_Description;
                 bp.m_Icon = null;
                 bp.HideInUI = false;
@@ -167,14 +175,45 @@ namespace BonusFeatsPerLevel.NewContent.Classes
                 {
                     new BlueprintProgression.ClassWithLevel
                     {
-                        m_Class = BlueprintTools.GetModBlueprintReference<BlueprintCharacterClassReference>(BFPLContext, "NineTailsClass")
+                        m_Class = BlueprintTools.GetModBlueprintReference<BlueprintCharacterClassReference>(ThisModContext, "NineTailsClass")
                     }
                 };
                 bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[0];
                 bp.ForAllOtherClasses = false;
                 bp.m_AlternateProgressionClasses = new BlueprintProgression.ClassWithLevel[0];
                 bp.AlternateProgressionType = AlternateProgressionType.Div2;
-                bp.LevelEntries = new LevelEntry[]
+                LevelEntry[] LevelEntries = new LevelEntry[40];
+                for (int i = 0; i < 40; i++)
+                {
+                    LevelEntry Entry = new LevelEntry();
+                    Entry.SetFeatures(new List<BlueprintFeatureBase> { });
+                    Entry.Level = i + 1;
+                    LevelEntries[i] = Entry;
+                }
+                foreach (LevelEntry Entry in LevelEntries)
+                {
+                    Entry.Features.Add(NineTailsFocused);
+                    if (Entry.Level == 1)
+                    {
+                        Entry.Features.Add(ScribingScrolls);
+                        Entry.Features.Add(BrewPotions);
+                        Entry.Features.Add(BackgroundBaseSelection);
+                    }
+                    if (Entry.Level <= 2) { Entry.Features.Add(SkillFocusSelection); }
+                    if (Entry.Level % 2 == 0) { Entry.Features.Add(BasicFeatSelection); }
+                    if (Entry.Level % 2 == 0 && Entry.Level >= 4) { Entry.Features.Add(NineTailsMetamagicKnowledge); }
+                    if (Entry.Level == 3) { Entry.Features.Add(MagicalTailArchetypeFeatureAP1); }
+                    if (Entry.Level == 5) { Entry.Features.Add(MagicalTailArchetypeFeatureAP2); }
+                    if (Entry.Level == 7) { Entry.Features.Add(MagicalTailArchetypeFeatureAP3); }
+                    if (Entry.Level == 9) { Entry.Features.Add(MagicalTailArchetypeFeatureAP4); }
+                    if (Entry.Level == 11) { Entry.Features.Add(MagicalTailArchetypeFeatureAP5); }
+                    if (Entry.Level == 13) { Entry.Features.Add(MagicalTailArchetypeFeatureAP6); }
+                    if (Entry.Level == 15) { Entry.Features.Add(MagicalTailArchetypeFeatureAP7); }
+                    if (Entry.Level == 17) { Entry.Features.Add(MagicalTailArchetypeFeatureAP8); }
+                    if (Entry.Level == 19) { Entry.Features.Add(MagicalTailArchetypeFeatureAP9); }
+                }
+                bp.LevelEntries = LevelEntries;
+                /* bp.LevelEntries = new LevelEntry[]
                 {
                     Helpers.CreateLevelEntry(1, NineTailsFocused, SkillFocusSelection, ScribingScrolls, BrewPotions, BackgroundBaseSelection),
                     Helpers.CreateLevelEntry(2, NineTailsFocused, BasicFeatSelection, SkillFocusSelection),
@@ -196,7 +235,7 @@ namespace BonusFeatsPerLevel.NewContent.Classes
                     Helpers.CreateLevelEntry(18, NineTailsFocused, BasicFeatSelection, NineTailsMetamagicKnowledge),
                     Helpers.CreateLevelEntry(19, NineTailsFocused, MagicalTailArchetypeFeatureAP9),
                     Helpers.CreateLevelEntry(20, NineTailsFocused, BasicFeatSelection, NineTailsMetamagicKnowledge)
-                };
+                }; */
                 bp.UIGroups = new UIGroup[0];
                 bp.m_UIDeterminatorsGroup = new BlueprintFeatureBaseReference[0];
                 bp.m_ExclusiveProgression = null;
@@ -205,7 +244,7 @@ namespace BonusFeatsPerLevel.NewContent.Classes
             });
             
 
-            if (BFPLContext.Homebrew.Classes.IsDisabled("NineTailsClass")) { return; }
+            if (ThisModContext.Homebrew.Classes.IsDisabled("NineTailsClass")) { return; }
             BlueprintRoot.Progression.m_CharacterClasses = BlueprintRoot.Progression.m_CharacterClasses.AppendToArray(Class.ToReference<BlueprintCharacterClassReference>());
         }
     }

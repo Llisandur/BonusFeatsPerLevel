@@ -25,7 +25,7 @@ namespace BonusFeatsPerLevel.NewContent.Classes
             BlueprintFeatureSelection BackgroundBaseSelection = BlueprintFeatures.BackgroundsBaseSelection;
             
 
-            var Class = Helpers.CreateBlueprint<BlueprintCharacterClass>(BFPLContext, "AdvancedProgressionClass", bp =>
+            var Class = Helpers.CreateBlueprint<BlueprintCharacterClass>(ThisModContext, "AdvancedProgressionClass", bp =>
             {
                 bp.m_Overrides = new List<string>();
                 bp.AddComponent<PrerequisiteNoClassLevel>(c =>
@@ -42,8 +42,8 @@ namespace BonusFeatsPerLevel.NewContent.Classes
                     c.HideInUI = true;
                     c.Not = true;
                 });
-                bp.LocalizedName = Helpers.CreateString(BFPLContext, $"{bp.name}.Name", "Advanced Progression");
-                bp.LocalizedDescription = Helpers.CreateString(BFPLContext, $"{bp.name}.Description", "A class to use with gestalt multiple classes to add extra base feats. DO NOT TAKE AS BASE CLASS.");
+                bp.LocalizedName = Helpers.CreateString(ThisModContext, $"{bp.name}.Name", "Advanced Progression");
+                bp.LocalizedDescription = Helpers.CreateString(ThisModContext, $"{bp.name}.Description", "A class to use with gestalt multiple classes to add extra base feats. DO NOT TAKE AS BASE CLASS.");
                 bp.LocalizedDescriptionShort = bp.LocalizedDescription;
                 bp.m_Icon = null;
                 bp.SkillPoints = 0;
@@ -55,7 +55,7 @@ namespace BonusFeatsPerLevel.NewContent.Classes
                 bp.m_FortitudeSave = BlueprintTools.GetBlueprintReference<BlueprintStatProgressionReference>("dc0c7c1aba755c54f96c089cdf7d14a3"); //SavesLow
                 bp.m_ReflexSave = BlueprintTools.GetBlueprintReference<BlueprintStatProgressionReference>("dc0c7c1aba755c54f96c089cdf7d14a3"); //SavesLow
                 bp.m_WillSave = BlueprintTools.GetBlueprintReference<BlueprintStatProgressionReference>("dc0c7c1aba755c54f96c089cdf7d14a3"); //SavesLow
-                bp.m_Progression = BlueprintTools.GetModBlueprintReference<BlueprintProgressionReference>(BFPLContext, "AdvancedProgressionProgression");
+                bp.m_Progression = BlueprintTools.GetModBlueprintReference<BlueprintProgressionReference>(ThisModContext, "AdvancedProgressionProgression");
                 bp.m_Spellbook = null;
                 bp.ClassSkills = new StatType[0];
                 bp.IsDivineCaster = false;
@@ -75,13 +75,13 @@ namespace BonusFeatsPerLevel.NewContent.Classes
                 bp.m_DefaultBuild = null;
                 bp.m_AdditionalVisualSettings = null;
             });
-            var Progression = Helpers.CreateBlueprint<BlueprintProgression>(BFPLContext, "AdvancedProgressionProgression", bp =>
+            var Progression = Helpers.CreateBlueprint<BlueprintProgression>(ThisModContext, "AdvancedProgressionProgression", bp =>
             {
                 bp.m_Overrides = new List<string>();
                 bp.Components = new BlueprintComponent[0];
                 bp.m_AllowNonContextActions = false;
-                bp.m_DisplayName = Helpers.CreateString(BFPLContext, $"{bp.name}.Name", "");
-                bp.m_Description = Helpers.CreateString(BFPLContext, $"{bp.name}.Description", ""); ;
+                bp.m_DisplayName = Helpers.CreateString(ThisModContext, $"{bp.name}.Name", "");
+                bp.m_Description = Helpers.CreateString(ThisModContext, $"{bp.name}.Description", ""); ;
                 bp.m_DescriptionShort = bp.m_Description;
                 bp.m_Icon = null;
                 bp.HideInUI = false;
@@ -96,7 +96,7 @@ namespace BonusFeatsPerLevel.NewContent.Classes
                 {
                     new BlueprintProgression.ClassWithLevel
                     {
-                        m_Class = BlueprintTools.GetModBlueprintReference<BlueprintCharacterClassReference>(BFPLContext, "AdvancedProgressionClass")
+                        m_Class = BlueprintTools.GetModBlueprintReference<BlueprintCharacterClassReference>(ThisModContext, "AdvancedProgressionClass")
                     }
                 };
                 bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[0];
@@ -138,7 +138,7 @@ namespace BonusFeatsPerLevel.NewContent.Classes
                 bp.m_FeaturesRankIncrease = null;
             });
  
-            if (BFPLContext.Homebrew.Classes.IsDisabled("AdvancedProgressionClass")) { return; }
+            if (ThisModContext.Homebrew.Classes.IsDisabled("AdvancedProgressionClass")) { return; }
             BlueprintRoot.Progression.m_CharacterClasses = BlueprintRoot.Progression.m_CharacterClasses.AppendToArray(Class.ToReference<BlueprintCharacterClassReference>());
         }
     }

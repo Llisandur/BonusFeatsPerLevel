@@ -21,7 +21,7 @@ namespace BonusFeatsPerLevel
         public static void Homebrew()
         {
             var TabLevel = SetttingUI.TabLevel.Zero;
-            var Homebrew = Main.BFPLContext.Homebrew;
+            var Homebrew = Main.ThisModContext.Homebrew;
             UI.Div(0, 15);
             using (UI.VerticalScope())
             {
@@ -30,6 +30,7 @@ namespace BonusFeatsPerLevel
 
                 SetttingUI.SettingGroup("MechanicsChanges", TabLevel, Homebrew.MechanicsChanges);
                 SetttingUI.SettingGroup("Classes", TabLevel, Homebrew.Classes);
+                //SetttingUI.SettingGroup("Archetypes", TabLevel, Homebrew.Archetypes);
                 SetttingUI.SettingGroup("Feats", TabLevel, Homebrew.Feats);
                 //SetttingUI.SettingGroup("Mythic Abilties", TabLevel, Homebrew.MythicAbilities);
                 //SetttingUI.SettingGroup("Mythic Feats", TabLevel, Homebrew.MythicFeats);

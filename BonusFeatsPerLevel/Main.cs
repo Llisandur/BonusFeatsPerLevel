@@ -7,23 +7,23 @@ namespace BonusFeatsPerLevel
 {
     static class Main
     {
-        public static bool Enabled;
-        public static ModContextBFPL BFPLContext;
+        //public static bool Enabled;
+        public static ModContext ThisModContext;
         static bool Load(UnityModManager.ModEntry modEntry)
         {
             var harmony = new Harmony(modEntry.Info.Id);
-            BFPLContext = new ModContextBFPL(modEntry);
+            ThisModContext = new ModContext(modEntry);
             //MAContext.LoadAllSettings();
-            BFPLContext.ModEntry.OnSaveGUI = OnSaveGUI;
-            BFPLContext.ModEntry.OnGUI = UMMSettingsUI.OnGUI;
+            ThisModContext.ModEntry.OnSaveGUI = OnSaveGUI;
+            ThisModContext.ModEntry.OnGUI = UMMSettingsUI.OnGUI;
             harmony.PatchAll();
-            PostPatchInitializer.Initialize(BFPLContext);
+            PostPatchInitializer.Initialize(ThisModContext);
             return true;
         }
 
         static void OnSaveGUI(UnityModManager.ModEntry modEntry)
         {
-            BFPLContext.SaveAllSettings();
+            ThisModContext.SaveAllSettings();
         }
     }
 }

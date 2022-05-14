@@ -4,11 +4,11 @@ using static UnityModManagerNet.UnityModManager;
 
 namespace BonusFeatsPerLevel.ModLogic
 {
-    internal class ModContextBFPL : ModContextBase
+    internal class ModContext : ModContextBase
     {
         public Homebrew Homebrew;
 
-        public ModContextBFPL(ModEntry ModEntry) : base(ModEntry)
+        public ModContext(ModEntry ModEntry) : base(ModEntry)
         {
 #if DEBUG
             Debug = true;

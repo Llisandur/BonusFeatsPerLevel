@@ -2,7 +2,7 @@
   "Id": "BonusFeatsPerLevel",
   "DisplayName": "Bonus Feats per Level",
   "Author": "Llisandur",
-  "Version": "0.4.15",
+  "Version": "0.4.24",
   "ManagerVersion": "0.24.1",
   "Requirements": [ "TabletopTweaks-Base" ],
   "LoadAfter": [ "TabletopTweaks-Base" ],

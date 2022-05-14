@@ -16,7 +16,7 @@ namespace BonusFeatsPerLevel.NewContent
             {
                 if (Initialized) return;
                 Initialized = true;
-                BFPLContext.Logger.LogHeader("Loading New Content");
+                ThisModContext.Logger.LogHeader("Loading New Content");
 
                 Classes.AdvancedProgressionClass.CreateAdvancedProgressionClass();
                 Classes.NineTailsClass.CreateNineTailsClass();
