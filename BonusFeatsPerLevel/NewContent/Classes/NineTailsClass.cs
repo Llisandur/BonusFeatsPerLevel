@@ -7,10 +7,16 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using static Kingmaker.Blueprints.Classes.Prerequisites.Prerequisite;
 using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Blueprints.Root;
+using Kingmaker.UnitLogic.Abilities;
+using Kingmaker.UnitLogic.FactLogic;
+using Kingmaker.UnitLogic.Mechanics;
+using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.ResourceLinks;
 using Kingmaker.RuleSystem;
+using Kingmaker.Enums;
 using TabletopTweaks.Core.Utilities;
 using static BonusFeatsPerLevel.Main;
 using BonusFeatsPerLevel.Utilities;
@@ -28,6 +34,11 @@ namespace BonusFeatsPerLevel.NewContent.Classes
             var ScribingScrolls = BlueprintTools.GetBlueprint<BlueprintFeature>("a8a385bf53ee3454593ce9054375a2ec");
             var BrewPotions = BlueprintTools.GetBlueprint<BlueprintFeature>("c0f8c4e513eb493408b8070a1de93fc0");
             var SkillFocusSelection = BlueprintTools.GetBlueprint<BlueprintFeature>("c9629ef9eebb88b479b2fbc5e836656a");
+            var Trapfinding = BlueprintTools.GetBlueprint<BlueprintFeature>("dbb6b3bffe6db3547b31c3711653838e");
+            var DangerSenseRogue = BlueprintTools.GetBlueprint<BlueprintFeature>("0bcbe9e450b0e7b428f08f66c53c5136");
+            var Evasion = BlueprintTools.GetBlueprint<BlueprintFeature>("576933720c440aa4d8d42b0c54b77e80");
+            var ImprovedEvasion = BlueprintTools.GetBlueprint<BlueprintFeature>("ce96af454a6137d47b9c6a1e02e66803");
+
             #endregion
             #region Create Tails
             var TailArchetypeFeature1 = BlueprintTools.GetBlueprint<BlueprintFeature>("c78a6efed8b2a8e4aacc0f3fb6908d93"); //MagicalTailArchetypeFeature1
@@ -53,6 +64,73 @@ namespace BonusFeatsPerLevel.NewContent.Classes
             var MagicalTailArchetypeFeatureAP8 = TailArchetypeFeature8.CreateCopy(ThisModContext, "MagicalTailArchetypeFeatureAP8", bp => { bp.SetDescription(ThisModContext, TailDesc); });
             var MagicalTailArchetypeFeatureAP9 = TailArchetypeFeature9.CreateCopy(ThisModContext, "MagicalTailArchetypeFeatureAP9", bp => { bp.SetDescription(ThisModContext, TailDesc); });
             #endregion
+            #region Create Kitsune Trapfinding
+            //string TrapfindingDesc = "A nine tails adds 1/2 their level on {g|Encyclopedia:Perception}Perception checks{/g}.";
+            var NineTailsKitsuneTrapfinding = Helpers.CreateBlueprint<BlueprintFeature>(ThisModContext, "NineTailsKitsuneTrapfinding", bp => 
+            {
+                bp.SetName(ThisModContext, "Kitsune Trapfinding");
+                bp.SetDescription(ThisModContext, "Kitsune are always watching for tricks from others, and nine tails are especially vigilant. A nine tails adds " +
+                    "1/2 their level on {g|Encyclopedia:Perception}Perception{/g} checks and {g|Encyclopedia:Trickery}Trickery{/g} checks.");
+                bp.m_DescriptionShort = Helpers.CreateString(ThisModContext, $"{bp.name}.DescriptionShort","");
+                bp.m_Icon = Trapfinding.Icon;
+                bp.AddComponent(Helpers.CreateContextRankConfig(c =>
+                {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.Div2;
+                    c.m_StartLevel = 0;
+                    c.m_StepLevel = 0;
+                    c.m_UseMin = true;
+                    c.m_Min = 1;
+                    c.m_UseMax = false;
+                    c.m_Max = 20;
+                    c.m_ExceptClasses = false;
+                    c.m_Class = new BlueprintCharacterClassReference[]
+                    {
+                        BlueprintTools.GetModBlueprintReference<BlueprintCharacterClassReference>(ThisModContext, "NineTailsClass")
+                    };
+                }));
+                bp.AddComponent<AddContextStatBonus>(c =>
+                {
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Stat = StatType.SkillThievery;
+                    c.Value = new ContextValue
+                    {
+                        ValueType = ContextValueType.Rank,
+                        Value = 0,
+                        ValueRank = AbilityRankType.Default,
+                        ValueShared = AbilitySharedValue.Damage,
+                        Property = UnitProperty.None
+                    };
+                });
+                bp.AddComponent<AddContextStatBonus>(c =>
+                {
+                    c.Descriptor |= ModifierDescriptor.UntypedStackable;
+                    c.Stat = StatType.SkillPerception;
+                    c.Value = new ContextValue
+                    {
+                        ValueType = ContextValueType.Rank,
+                        Value = 0,
+                        ValueRank = AbilityRankType.Default,
+                        ValueShared = AbilitySharedValue.Damage,
+                        Property = UnitProperty.None
+                    };
+                });
+                bp.ReapplyOnLevelUp = true;
+                bp.IsClassFeature = true;
+            });
+            #endregion
+            #region Create Kitsune Danger Sense
+            var NineTailsKitsuneDangerSense = DangerSenseRogue.CreateCopy(ThisModContext, "NineTailsKitsuneDangerSense", bp =>
+            {
+                bp.SetName(ThisModContext, "Kitsune Danger Sense");
+                bp.SetDescription(ThisModContext, "At 3rd level, a nine tails gains a +1 {g|Encyclopedia:Bonus}bonus{/g} on Reflex {g|Encyclopedia:Saving_Throw}saves{/g} to " +
+                    "traps and a +1 dodge bonus to {g|Encyclopedia:Armor_Class}AC{/g} against {g|Encyclopedia:Attack}attacks{/g} made by traps. These bonuses increase by 1 " +
+                    "every 3 nine tails levels thereafter (to a maximum of +6 at 18th level).");
+            });
+            #endregion
             #region Metamagic Knowledge
             var NineTailsMetamagicKnowledge = Helpers.CreateBlueprint<BlueprintFeatureSelection>(ThisModContext, "NineTailsMetamagicKnowledge", bp => {
                 bp.SetName(ThisModContext, "Metamagic Knowledge");
@@ -67,7 +145,7 @@ namespace BonusFeatsPerLevel.NewContent.Classes
             #endregion
             #region Focused
             var NineTailsFocused = Helpers.CreateBlueprint<BlueprintFeatureSelection>(ThisModContext, "NineTailsFocused", bp => {
-                bp.SetName(ThisModContext, "Focused");
+                bp.SetName(ThisModContext, "Focus");
                 bp.SetDescription(ThisModContext, "At every level, the nine tails gains a bonus {g|Encyclopedia:Feat}feat{/g} in addition " +
                     "to those gained from normal advancement. These bonus feats must be selected from a selection of magic-related feats. The nine tails must meet the " +
                     "prerequisites of this feat.");
@@ -86,6 +164,36 @@ namespace BonusFeatsPerLevel.NewContent.Classes
                 BlueprintTools.GetBlueprintReference<BlueprintParametrizedFeatureReference>("16fa59cc9a72a6043b566b49184f53fe"), //SpellFocus
                 BlueprintTools.GetBlueprintReference<BlueprintParametrizedFeatureReference>("5b04b45b228461c43bad768eb0f7c7bf"), //SpellFocusGreater
                 BlueprintTools.GetBlueprintReference<BlueprintParametrizedFeatureReference>("03031defb7164fcea949dcc05da1761d") //TTT.Base:VarisianTattooFeature
+
+            );
+
+            #endregion
+            #region Greater Focused
+            var NineTailsFocusedGreater = Helpers.CreateBlueprint<BlueprintFeatureSelection>(ThisModContext, "NineTailsFocusedGreater", bp => {
+                bp.SetName(ThisModContext, "Greater Focus");
+                bp.SetDescription(ThisModContext, "At 6th level and every level after, the nine tails gains another bonus {g|Encyclopedia:Feat}feat{/g} in addition " +
+                    "to those gained from normal advancement. These bonus feats must be selected from a selection of magic-related feats or from mythic abilities or feats. The nine tails must meet the " +
+                    "prerequisites of this feat.");
+                bp.m_Features = new BlueprintFeatureReference[0];
+                bp.Mode = SelectionMode.Default;
+                bp.Groups = new FeatureGroup[] { FeatureGroup.Feat };
+                bp.IsClassFeature = true;
+            });
+            //NineTailsFocused.AddFeatures(BasicFeatSelection.m_AllFeatures
+            //    .Select(reference => reference.Get())
+            //    .Where(feature => feature.GetComponent<FeatureTagsComponent>().FeatureTags == FeatureTag.Magic)
+            //    .ToArray());
+            NineTailsFocusedGreater.AddFeatures(
+                BlueprintTools.GetBlueprintReference<BlueprintFeatureSelectionReference>("8ecee479c6d04c73926c4d95345b9314"), //TTT.Base:ExtraArcanistExploit
+                BlueprintTools.GetBlueprintReference<BlueprintFeatureReference>("635cb4aa1d924fe0b580449e6cb0396c"), //TTT.Base:ExtraReservoir
+                BlueprintTools.GetBlueprintReference<BlueprintParametrizedFeatureReference>("16fa59cc9a72a6043b566b49184f53fe"), //SpellFocus
+                BlueprintTools.GetBlueprintReference<BlueprintParametrizedFeatureReference>("5b04b45b228461c43bad768eb0f7c7bf"), //SpellFocusGreater
+                BlueprintTools.GetBlueprintReference<BlueprintParametrizedFeatureReference>("03031defb7164fcea949dcc05da1761d"), //TTT.Base:VarisianTattooFeature
+                BlueprintTools.GetBlueprintReference<BlueprintFeatureSelectionReference>("ba0e5a900b775be4a99702f1ed08914d"), //MythicAbilitySelection
+                BlueprintTools.GetBlueprintReference<BlueprintFeatureSelectionReference>("9ee0f6745f555484299b0a1563b99d81") //MythicFeatSelection
+                ,BlueprintTools.GetModBlueprintReference<BlueprintFeatureSelectionReference>(ThisModContext, "ExtraMythicAbility"), // ExtraMythicAbility
+                BlueprintTools.GetModBlueprintReference<BlueprintFeatureSelectionReference>(ThisModContext, "ExtraMythicFeat") //ExtraMythicFeat
+
 
             );
 
@@ -198,16 +306,21 @@ namespace BonusFeatsPerLevel.NewContent.Classes
                         Entry.Features.Add(ScribingScrolls);
                         Entry.Features.Add(BrewPotions);
                         Entry.Features.Add(BackgroundBaseSelection);
+                        Entry.Features.Add(NineTailsKitsuneTrapfinding);
                     }
                     if (Entry.Level <= 2) { Entry.Features.Add(SkillFocusSelection); }
                     if (Entry.Level % 2 == 0) { Entry.Features.Add(BasicFeatSelection); }
+                    if (Entry.Level % 3 == 0 && Entry.Level >= 3) { Entry.Features.Add(NineTailsKitsuneDangerSense); }
                     if (Entry.Level % 2 == 0 && Entry.Level >= 4) { Entry.Features.Add(NineTailsMetamagicKnowledge); }
                     if (Entry.Level == 3) { Entry.Features.Add(MagicalTailArchetypeFeatureAP1); }
                     if (Entry.Level == 5) { Entry.Features.Add(MagicalTailArchetypeFeatureAP2); }
+                    if (Entry.Level >= 6) { Entry.Features.Add(NineTailsFocusedGreater); }
+                    if (Entry.Level == 6) { Entry.Features.Add(Evasion); }
                     if (Entry.Level == 7) { Entry.Features.Add(MagicalTailArchetypeFeatureAP3); }
                     if (Entry.Level == 9) { Entry.Features.Add(MagicalTailArchetypeFeatureAP4); }
                     if (Entry.Level == 11) { Entry.Features.Add(MagicalTailArchetypeFeatureAP5); }
                     if (Entry.Level == 13) { Entry.Features.Add(MagicalTailArchetypeFeatureAP6); }
+                    if (Entry.Level == 13) { Entry.Features.Add(ImprovedEvasion); }
                     if (Entry.Level == 15) { Entry.Features.Add(MagicalTailArchetypeFeatureAP7); }
                     if (Entry.Level == 17) { Entry.Features.Add(MagicalTailArchetypeFeatureAP8); }
                     if (Entry.Level == 19) { Entry.Features.Add(MagicalTailArchetypeFeatureAP9); }
@@ -236,7 +349,10 @@ namespace BonusFeatsPerLevel.NewContent.Classes
                     Helpers.CreateLevelEntry(19, NineTailsFocused, MagicalTailArchetypeFeatureAP9),
                     Helpers.CreateLevelEntry(20, NineTailsFocused, BasicFeatSelection, NineTailsMetamagicKnowledge)
                 }; */
-                bp.UIGroups = new UIGroup[0];
+                bp.UIGroups = new UIGroup[]
+                {
+                    Helpers.CreateUIGroup(Evasion, ImprovedEvasion)
+                };
                 bp.m_UIDeterminatorsGroup = new BlueprintFeatureBaseReference[0];
                 bp.m_ExclusiveProgression = null;
                 bp.GiveFeaturesForPreviousLevels = false;

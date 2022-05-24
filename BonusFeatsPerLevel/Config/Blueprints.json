@@ -17,8 +17,11 @@
     "MagicalTailArchetypeFeatureAP9": "d3919c11-2752-4488-942f-3ec60b73d38c",
     "NineTailsClass": "75719d9c-0289-400f-88d9-55e863a72323",
     "NineTailsFocused": "f840025c-a2a4-4350-a7f3-61719abef937",
-    "NineTailsProgression": "13cbe646-4ab5-4732-81e9-6c3a2cec135a",
-    "NineTailsMetamagicKnowledge": "9ffb1196-2460-4a24-9b7f-adf584d73f0d"
+    "NineTailsFocusedGreater": "41e07e8f-a19d-489d-98a0-5bdbb540b85b",
+    "NineTailsKitsuneDangerSense": "a670ea37-31ae-43d3-a160-de9e9b99f551",
+    "NineTailsKitsuneTrapfinding": "3c1fef2a-36c5-4833-8f9e-49f22c76224c",
+    "NineTailsMetamagicKnowledge": "9ffb1196-2460-4a24-9b7f-adf584d73f0d",
+    "NineTailsProgression": "13cbe646-4ab5-4732-81e9-6c3a2cec135a"
   },
   "DerivedBlueprintMasters": {},
   "DerivedBlueprints": {},

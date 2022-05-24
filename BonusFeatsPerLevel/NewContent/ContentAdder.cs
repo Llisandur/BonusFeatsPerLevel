@@ -19,10 +19,10 @@ namespace BonusFeatsPerLevel.NewContent
                 ThisModContext.Logger.LogHeader("Loading New Content");
 
                 Classes.AdvancedProgressionClass.CreateAdvancedProgressionClass();
-                Classes.NineTailsClass.CreateNineTailsClass();
                 Feats.ExtraBackground.AddExtraBackground();
                 Feats.ExtraMythicAbility.AddExtraMythicAbility();
                 Feats.ExtraMythicFeat.AddExtraMythicFeat();
+                Classes.NineTailsClass.CreateNineTailsClass();
             }
         }
     }
